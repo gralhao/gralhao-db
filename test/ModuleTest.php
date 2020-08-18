@@ -9,15 +9,21 @@ class ModuleTest extends \Gralhao\Test\TestCase
     public function testReturnsAPdoClassException(): void
     {
         $this->expectException(\PDOException::class);
-        $this->bootstrap()->setConfig([
+        $bootstrap = $this->bootstrap();
+        $bootstrap->setConfig([
             'modules' => [
                 'Gralhao\Db'
             ],
             'database' => [
                 'adapter' => 'Mysql',
             ],
-        ])->init();
-        $container = $this->getApp()->di;
-        $container->get('db');
+        ]);
+        $app = $this->getApp();
+        $app->notFound(function () use ($app) {
+            $app->response->setStatusCode(404);
+            $app->response->send();
+        });
+        $bootstrap->init();
+        $app->di->get('db');
     }
 }
