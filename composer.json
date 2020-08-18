@@ -1,0 +1,38 @@
+{
+    "name": "gralhao/gralhao-db",
+    "description": "Gralhao Database Module",
+    "type": "library",
+    "minimum-stability": "stable",
+    "homepage": "https://github.com/gralhao/gralhao-db",
+    "keywords": [
+        "phalcon",
+        "gralhao",
+        "db",
+        "database",
+        "mysql"
+    ],
+    "autoload": {
+        "psr-4": {
+            "Gralhao\\Db\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "GralhaoDb\\Test\\": "test/"
+        }
+    },
+    "require": {
+        "gralhao/gralhao": "^1.0"
+    },
+    "require-dev": {
+        "phalcon/ide-stubs": "dev-master",
+        "squizlabs/php_codesniffer": "^3.0@dev",
+        "gralhao/gralhao-test": "^1.0"
+    },
+    "license": "BSD-3-Clause",
+    "scripts": {
+        "cs-check": "./vendor/bin/phpcs",
+        "cs-fix": "./vendor/bin/phpcbf",
+        "test": "./vendor/bin/phpunit --testdox --coverage-text --coverage-html coverage/html"
+    }
+}
